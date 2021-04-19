@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Assignment3.Models.Question>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Assignment3Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h1>Learn, Share, Build!</h1>
+    <p class="lead">
+        Each month, over 50 million developers come to Stack Overflow to learn, share their knowledge,
+        and build their careers.
+    </p>
+    <p>Join the world's largest developer community.</p>
+</div>
+<div class="table_display">
+<table>
+@foreach (var item in Model) {
+    <tr class="table_tr">
+        <td class="table_td">
+            <p><span class="digital">@Html.DisplayFor(modelItem => item.vote)</span>&nbsp;&nbsp;Votes</p> 
+        </td>
+        <td class="table_td">
+            <p><span class="digital">@Html.DisplayFor(modelItem => item.answerCount)</span>&nbsp;&nbsp;Answers</p>
+        </td>
+        <td class="table_td">
+            <p><span class="digital">@Html.DisplayFor(modelItem => item.view) </span>&nbsp;&nbsp;Views </p>
+        </td>
+        <td class="table_td">
+            @Html.ActionLink(item.questionName.ToString(), "GetQuestion", "Question", new { id=item.questionID },null)<br/>
+            <span class="category">@Html.DisplayFor(modelItem => item.categoryName)</span>
+        </td>
+        <td class="table_td">
+            @Html.DisplayFor(modelItem => item.questionDT)
+        </td>
+    </tr>
+}
+
+</table>
+ </div>

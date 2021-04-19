@@ -1,0 +1,59 @@
+﻿@model Assignment3.Models.Question
+
+@{
+    ViewBag.Title = "addAnswer";
+    Layout = "~/Views/Shared/_Assignment3Layout.cshtml";
+}
+
+<h2>addAnswer</h2>
+
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.questionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.questionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.questionDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.questionDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categoryID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categoryID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vote)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vote)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.view)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.view)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.questionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

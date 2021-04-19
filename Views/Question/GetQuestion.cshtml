@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Assignment3.Models.Question>
+
+@{
+    ViewBag.Title = "GetQuestion";
+    Layout = "~/Views/Shared/_Assignment3Layout.cshtml";
+}
+@foreach(var question in Model)
+{
+<div class="title">
+
+    <h2>@Html.DisplayFor(Qmodel => question.questionName)</h2>
+    <p>
+        <span class="category">@Html.DisplayFor(Qmodel => question.categoryName)</span>
+        <span>by @Html.DisplayFor(Qmodel => question.questionDT)</span>
+        <span class="category">@Html.DisplayFor(Qmodel => question.view)</span>&nbsp;&nbsp;Views
+        <span class="digital">@Html.DisplayFor(Qmodel => question.vote)</span>&nbsp;&nbsp;Votes
+    </p>
+    <p>
+        @foreach (var item in question.answers)
+        {
+            <span>@Html.DisplayFor(answers => item.answerText)</span><br />
+            <span>@Html.DisplayFor(answers => item.username)</span><br />
+            <span>@Html.DisplayFor(answers => item.answerDT)</span><br />
+        }
+
+    </p>
+
+</div>
+}
+
+

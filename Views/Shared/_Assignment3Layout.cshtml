@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Title Stackoverflow</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div>
+            <div class="navbar-header">
+                @Html.ActionLink("Stackoverflow", "Index", "Assignment3_Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Assignment3_Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Assignment3_Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Assignment3_Home")</li>
+                    <li>@Html.ActionLink("Categories", "Contact", "Assignment3_Home")</li>
+                    <li>@Html.ActionLink("Question", "Contact", "Assignment3_Home")</li>
+                    <li>@Html.ActionLink("Login", "Contact", "Assignment3_Home")</li>
+                    <li>@Html.ActionLink("Register", "Contact", "Assignment3_Home")</li>
+                </ul>
+                <div class="search_block">
+                    <input name="txt_search" type="text" />
+                    <button name="bt_search" class="bt_search">Search</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
