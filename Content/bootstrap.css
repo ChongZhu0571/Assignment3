@@ -1465,6 +1465,10 @@ dd {
     margin-left: 180px;
   }
 }
+.title{
+    padding-left:25%;
+    padding-bottom:30px;
+}
 abbr[title],
 abbr[data-original-title] {
   cursor: help;
@@ -5033,13 +5037,25 @@ a.badge:focus {
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
+.contact {
+    width: 100%;
+    height: auto;
+    padding-left: 40%;
+    padding-top: 15px;
+}
+.rank_display{
+    width:100%;
+    height:auto;
+    padding-left:30px;
+    padding-top:15px;
+}
 .jumbotron {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
-  color: inherit;
-  background-color: #eeeeee;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-color: #eeeeee;
 }
 .table_display{
     width:100%;

@@ -4,28 +4,39 @@
     ViewBag.Title = "GetQuestion";
     Layout = "~/Views/Shared/_Assignment3Layout.cshtml";
 }
-@foreach(var question in Model)
+@foreach (var question in Model)
 {
-<div class="title">
+    using (Html.BeginForm("addAnswer", "Question", FormMethod.Post))
+    {
 
-    <h2>@Html.DisplayFor(Qmodel => question.questionName)</h2>
+<div class="title">
+    <h2>@Html.HiddenFor(Qmodel => question.questionID)
+    @Html.DisplayFor(Qmodel => question.questionName)</h2>
     <p>
-        <span class="category">@Html.DisplayFor(Qmodel => question.categoryName)</span>
-        <span>by @Html.DisplayFor(Qmodel => question.questionDT)</span>
-        <span class="category">@Html.DisplayFor(Qmodel => question.view)</span>&nbsp;&nbsp;Views
-        <span class="digital">@Html.DisplayFor(Qmodel => question.vote)</span>&nbsp;&nbsp;Votes
+
+        <span class="category">@Html.DisplayFor(Qmodel => question.categoryName)</span>&nbsp;&nbsp;
+        <span>by @Html.DisplayFor(answers => question.answers.FirstOrDefault().username) &nbsp;&nbsp;@Html.DisplayFor(Qmodel => question.questionDT)&nbsp;&nbsp;</span>
+        <span class="category">@Html.DisplayFor(Qmodel => question.view)</span>Views&nbsp;&nbsp;
+        <span class="digital">@Html.DisplayFor(Qmodel => question.vote)</span>Votes
     </p>
     <p>
         @foreach (var item in question.answers)
-        {
-            <span>@Html.DisplayFor(answers => item.answerText)</span><br />
-            <span>@Html.DisplayFor(answers => item.username)</span><br />
-            <span>@Html.DisplayFor(answers => item.answerDT)</span><br />
+        {<div class="answers">
+    <span>@Html.DisplayFor(answers => item.answerText)</span> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+    <span> by @Html.DisplayFor(answers => item.username)</span> &nbsp;&nbsp; &nbsp;&nbsp;
+    <span> on @Html.DisplayFor(answers => item.answerDT)</span><br /><br />
+</div>
+
         }
 
-    </p>
+    </p><br/>
+    <button class="bt_search" name="edit">Edit</button>
+    <h3>Add your answer</h3>
+    @Html.TextAreaFor(answerText => question.answer.answerText)<br />
+    <button type="submit" class="bt_search"> Add Answer</button>
 
 </div>
+    }
 }
 
 

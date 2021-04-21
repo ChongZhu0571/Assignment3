@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Assignment3.Models.Category>
+
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_Assignment3Layout.cshtml";
+}
+
+<div class="rank_display">
+<h2>The most 10 hottest Categories</h2>
+<table>
+    @{
+        int i = 1;
+        foreach (var item in Model)
+        {
+            <tr class="table_tr">
+                <td class="table_td">
+                    @i.&nbsp;@Html.DisplayFor(model => item.CategoryName)
+                </td>
+
+            </tr>
+            i++;
+
+
+
+        }
+    }
+
+</table>
+</div>

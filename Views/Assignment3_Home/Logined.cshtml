@@ -1,0 +1,10 @@
+﻿@model Assignment3.Models.User
+
+@{
+    ViewBag.Title = "Logined";
+    Layout = "~/Views/Shared/_Assignment3Layout.cshtml";
+}
+
+<h2>You've Logined, Welcome, @Session["username"]!</h2>
+<a href="@Url.Action("Logout","Assignment3_Home")" style="color:blue">Logout Now</a>
+

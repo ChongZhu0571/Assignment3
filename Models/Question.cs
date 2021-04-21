@@ -11,17 +11,24 @@ namespace Assignment3.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Question
     {
         public int questionID { get; set; }
         public string questionName { get; set; }
         public System.DateTime questionDT { get; set; }
         public int categoryID { get; set; }
-        public string categoryName { get; set; }
         public int vote { get; set; }
         public int view { get; set; }
+        [NotMapped]
         public int answerCount { get; set; }
+        [NotMapped]
+        public string categoryName { get; set; }
+        [NotMapped]
         public List<Answer> answers { get; set; }
+        // for two model manipulation in a view
+        [NotMapped]
+        public Answer answer { get; set; }
     }
 }

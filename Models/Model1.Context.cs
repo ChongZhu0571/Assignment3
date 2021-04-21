@@ -28,5 +28,6 @@ namespace Assignment3.Models
         public virtual DbSet<Answer> Answers { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

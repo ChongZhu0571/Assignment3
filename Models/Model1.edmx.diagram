@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="Assignment3Model.Answer" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="Assignment3Model.Category" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="Assignment3Model.Question" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Assignment3Model.User" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

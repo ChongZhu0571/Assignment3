@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Diagnostics;
 
 namespace Assignment3.Controllers
 {
@@ -16,6 +17,10 @@ namespace Assignment3.Controllers
             
             List<Question> questions = db.Questions.ToList();
             List<Answer> answers = db.Answers.ToList();
+            //add a view after clicked
+            var getView = db.Questions.FirstOrDefault(QId => QId.questionID == id);
+            getView.view += 1;
+            db.SaveChanges();
             //query all answers:
             var allAnswers = (from  a in answers
                               where a.questionID.Equals(id)
@@ -24,14 +29,29 @@ namespace Assignment3.Controllers
                                 where q.questionID.Equals(id)
                                 select new Question
                                 {
+                                    questionID = q.questionID,
                                     questionName = q.questionName,
                                     vote = q.vote,
-                                    view = q.view + 1,
+                                    view = q.view,
                                     questionDT = q.questionDT,
                                     categoryName = getCategoryName(id),
                                     answers = allAnswers
                                 }).ToList();   
             return View(questionInfo);
+        }
+
+       [HttpPost]
+        public ActionResult AddAnswer(Question question)
+        {
+            Debug.WriteLine(question.questionID);
+            Answer answer = new Answer();
+            answer.answerText = question.answer.answerText;
+            answer.answerDT = DateTime.Now;
+            answer.questionID = question.questionID;
+            answer.username = "Zhu";
+            db.Answers.Add(answer);
+            db.SaveChanges();
+            return RedirectToAction("GetQuestion", "Question", new { id=question.questionID});        
         }
 
             public string getCategoryName(int id)

@@ -9,33 +9,42 @@
           <Key>
             <PropertyRef Name="answerID" />
           </Key>
-          <Property Name="answerID" Type="int" Nullable="false" />
+          <Property Name="answerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="questionID" Type="int" Nullable="false" />
           <Property Name="answerText" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="answerDT" Type="datetime" Nullable="false" />
+          <Property Name="username" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="int" Nullable="false" />
-          <Property Name="CategoryName" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
             <PropertyRef Name="questionID" />
           </Key>
-          <Property Name="questionID" Type="int" Nullable="false" />
-          <Property Name="questionName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="questionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="questionName" Type="nchar" MaxLength="100" Nullable="false" />
           <Property Name="questionDT" Type="datetime" Nullable="false" />
           <Property Name="categoryID" Type="int" Nullable="false" />
           <Property Name="vote" Type="int" Nullable="false" />
           <Property Name="view" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="Assignment3ModelStoreContainer">
           <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -45,6 +54,7 @@
           <EntitySet Name="Answers" EntityType="Assignment3Model.Answer" />
           <EntitySet Name="Categories" EntityType="Assignment3Model.Category" />
           <EntitySet Name="Questions" EntityType="Assignment3Model.Question" />
+          <EntitySet Name="Users" EntityType="Assignment3Model.User" />
         </EntityContainer>
         <EntityType Name="Answer">
           <Key>
@@ -54,24 +64,32 @@
           <Property Name="questionID" Type="Int32" Nullable="false" />
           <Property Name="answerText" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="answerDT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Question">
           <Key>
             <PropertyRef Name="questionID" />
           </Key>
           <Property Name="questionID" Type="Int32" Nullable="false" />
-          <Property Name="questionName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="questionName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="questionDT" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="categoryID" Type="Int32" Nullable="false" />
           <Property Name="vote" Type="Int32" Nullable="false" />
           <Property Name="view" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -82,6 +100,7 @@
           <EntitySetMapping Name="Answers">
             <EntityTypeMapping TypeName="Assignment3Model.Answer">
               <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="answerDT" ColumnName="answerDT" />
                 <ScalarProperty Name="answerText" ColumnName="answerText" />
                 <ScalarProperty Name="questionID" ColumnName="questionID" />
@@ -106,6 +125,14 @@
                 <ScalarProperty Name="questionDT" ColumnName="questionDT" />
                 <ScalarProperty Name="questionName" ColumnName="questionName" />
                 <ScalarProperty Name="questionID" ColumnName="questionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Assignment3Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
